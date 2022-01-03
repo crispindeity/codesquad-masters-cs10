@@ -46,9 +46,9 @@ class LogicGateTest {
     void xorGateTest() {
         LogicGate logicGate = new LogicGate();
 
-        assertTrue(logicGate.xorGate(false, false));
-        assertFalse(logicGate.xorGate(false, true));
-        assertFalse(logicGate.xorGate(true, false));
-        assertTrue(logicGate.xorGate(true, true));
+        assertFalse(logicGate.xorGate(false, false));
+        assertTrue(logicGate.xorGate(false, true));
+        assertTrue(logicGate.xorGate(true, false));
+        assertFalse(logicGate.xorGate(true, true));
     }
 }

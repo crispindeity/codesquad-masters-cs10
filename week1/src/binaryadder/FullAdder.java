@@ -4,16 +4,16 @@ public class FullAdder {
 
     private boolean sum(boolean bitA, boolean bitB, boolean bitC) {
         HalfAdder halfAdder = new HalfAdder();
-        boolean halfAdderSum = halfAdder.sum(bitA, bitB);
-        return halfAdder.sum(bitC, halfAdderSum);
+        boolean halfAdderSum = halfAdder.halfAdder(bitA, bitB)[1];
+        return halfAdder.halfAdder(bitC, halfAdderSum)[1];
     }
 
     private boolean carry(boolean bitA, boolean bitB, boolean bitC) {
         HalfAdder halfAdder = new HalfAdder();
         LogicGate logicGate = new LogicGate();
-        boolean halfAdderSum = halfAdder.sum(bitA, bitB);
-        boolean halfAdderCarry = halfAdder.carry(bitA, bitB);
-        boolean fullAdderCarry = halfAdder.carry(bitC, halfAdderSum);
+        boolean halfAdderSum = halfAdder.halfAdder(bitA, bitB)[1];
+        boolean halfAdderCarry = halfAdder.halfAdder(bitA, bitB)[0];
+        boolean fullAdderCarry = halfAdder.halfAdder(bitC, halfAdderSum)[0];
         return logicGate.orGate(fullAdderCarry, halfAdderCarry);
     }
 

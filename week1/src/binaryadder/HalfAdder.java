@@ -2,12 +2,12 @@ package binaryadder;
 
 public class HalfAdder {
 
-    public boolean sum(boolean bitA, boolean bitB) {
+    private boolean sum(boolean bitA, boolean bitB) {
         LogicGate logicGate = new LogicGate();
         return logicGate.xorGate(bitA, bitB);
     }
 
-    public boolean carry(boolean bitA, boolean bitB) {
+    private boolean carry(boolean bitA, boolean bitB) {
         LogicGate logicGate = new LogicGate();
         return logicGate.andGate(bitA, bitB);
     }

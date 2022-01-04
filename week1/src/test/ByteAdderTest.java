@@ -98,4 +98,29 @@ class ByteAdderTest {
 
         assertArrayEquals(result, value);
     }
+
+    @Test
+    @DisplayName("1바이트 덧셈기 길이가 다른비트 더하기 테스트")
+    void byteAdderTest5() {
+        Adder adder = new Adder(logicGate);
+
+        boolean[] byteA = new boolean[] { false, true, true, false };
+        boolean[] byteB = new boolean[]
+                {
+                        true, false, false, true,
+                        false, true, true, false,
+                        false, true, true, false,
+                        false, true, true, false,
+                };
+        boolean[] value = adder.byteAdder(byteA, byteB);
+        boolean[] result = new boolean[]
+                {
+                        true, true, true, true,
+                        false, true, true, false,
+                        false, true, true, false,
+                        false, true, true, false
+                };
+
+        assertArrayEquals(result, value);
+    }
 }

@@ -13,7 +13,7 @@ class ConvertorTest {
     void dec2binTest() {
         Convertor convertor = new Convertor();
         boolean[] answer = convertor.dec2bin(10);
-        boolean[] value = {false, true, false, true, false, false, false, false};
+        boolean[] value = {false, true, false, true};
 
         assertArrayEquals(answer, value);
 

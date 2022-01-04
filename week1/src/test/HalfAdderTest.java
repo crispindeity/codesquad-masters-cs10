@@ -1,6 +1,7 @@
 package test;
 
-import binaryadder.HalfAdder;
+import binaryadder.Adder;
+import binaryadder.LogicGate;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -8,10 +9,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class HalfAdderTest {
 
+    LogicGate logicGate = new LogicGate();
+
     @Test
     @DisplayName("반쪽덧셈 테스트")
     void halfAdderTest() {
-        HalfAdder adder = new HalfAdder();
+        Adder adder = new Adder(logicGate);
 
         boolean[] answer = adder.halfAdder(true, true);
         assertTrue(answer[0]);

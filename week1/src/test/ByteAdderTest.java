@@ -1,6 +1,7 @@
 package test;
 
-import binaryadder.ByteAdder;
+import binaryadder.Adder;
+import binaryadder.LogicGate;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -8,14 +9,16 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ByteAdderTest {
 
+    LogicGate logicGate = new LogicGate();
+
     @Test
     @DisplayName("1바이트 뎃셈기 테스트")
     void byteAdderTest() {
-        ByteAdder byteAdder = new ByteAdder();
+        Adder adder = new Adder(logicGate);
         boolean[] byteA = {true, true, false, true, true, false, true, false};
         boolean[] byteB = {true, false, true, true, false, false, true, true};
 
-        boolean[] value = byteAdder.byteAdder(byteA, byteB);
+        boolean[] value = adder.byteAdder(byteA, byteB);
 
         assertFalse(value[0]);
         assertFalse(value[1]);
@@ -31,11 +34,11 @@ class ByteAdderTest {
     @Test
     @DisplayName("1바이트 뎃셈기 테스트2")
     void byteAdderTest2() {
-        ByteAdder byteAdder = new ByteAdder();
+        Adder adder = new Adder(logicGate);
         boolean[] byteA = {true, true, false, false, true, false, true, false};
         boolean[] byteB = {true, true, false, true, true, false, false, true};
 
-        boolean[] value = byteAdder.byteAdder(byteA, byteB);
+        boolean[] value = adder.byteAdder(byteA, byteB);
 
         assertFalse(value[0]);
         assertTrue(value[1]);

@@ -15,9 +15,6 @@ public class LogicGate {
     }
 
     public boolean xorGate(boolean paramA, boolean paramB) {
-        if (paramA && paramB) {
-            return false;
-        }
-        return paramA || paramB;
+        return paramA != paramB;
     }
 }

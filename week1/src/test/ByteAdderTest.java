@@ -12,7 +12,7 @@ class ByteAdderTest {
     LogicGate logicGate = new LogicGate();
 
     @Test
-    @DisplayName("1바이트 뎃셈기 테스트")
+    @DisplayName("1바이트 뎃셈기 8비트 테스트")
     void byteAdderTest() {
         Adder adder = new Adder(logicGate);
         boolean[] byteA = {true, true, false, true, true, false, true, false};
@@ -32,7 +32,7 @@ class ByteAdderTest {
     }
 
     @Test
-    @DisplayName("1바이트 뎃셈기 테스트2")
+    @DisplayName("1바이트 뎃셈기 8비트 테스트2")
     void byteAdderTest2() {
         Adder adder = new Adder(logicGate);
         boolean[] byteA = {true, true, false, false, true, false, true, false};
@@ -49,5 +49,53 @@ class ByteAdderTest {
         assertTrue(value[6]);
         assertTrue(value[7]);
         assertFalse(value[8]);
+    }
+
+    @Test
+    @DisplayName("1바이트 덧셈기 16비트 테스트")
+    void byteAdderTest3() {
+        Adder adder = new Adder(logicGate);
+        boolean[] byteA =
+                {
+                        true, false, false, true,
+                        false, true, true, false,
+                        false, true, true, false,
+                        false, true, true, false
+
+                };
+        boolean[] byteB =
+                {
+                        false, true, true, false,
+                        true, false, false, true,
+                        true, false, false, true,
+                        true, false, false, true
+                };
+
+        boolean[] value = adder.byteAdder(byteA, byteB);
+
+        boolean[] result = new boolean[]
+                {
+                        true, true, true, true,
+                        true, true, true, true,
+                        true, true, true, true,
+                        true, true, true, true,
+                        false
+                };
+
+        assertArrayEquals(value, result);
+    }
+
+    @Test
+    @DisplayName("1바이트 덧셈기 4비트 테스트")
+    void byteAdderTest4() {
+        Adder adder = new Adder(logicGate);
+
+        boolean[] byteA = new boolean[] { false, true, true, false };
+        boolean[] byteB = new boolean[] { true, false, false, true };
+
+        boolean[] value = adder.byteAdder(byteA, byteB);
+        boolean[] result = new boolean[] {true, true, true, true, false};
+
+        assertArrayEquals(result, value);
     }
 }

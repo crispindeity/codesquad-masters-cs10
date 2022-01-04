@@ -28,15 +28,14 @@ public class Adder {
     }
 
     public boolean[] byteAdder(boolean[] byteA, boolean[] byteB) {
-        boolean[] answer = new boolean[byteA.length + 1];
+        int byteLength = byteA.length > byteB.length ? byteA.length + 1 : byteB.length + 1;
+        boolean[] answer = new boolean[byteLength];
 
         boolean sum = halfAdder(byteA[0], byteB[0])[1];
         answer[0] = sum;
         boolean carry = halfAdder(byteA[0], byteB[0])[0];
 
-        halfAdder(byteA[0], byteB[0]);
-
-        for (int i = 1; i < byteA.length; i++) {
+        for (int i = 1; i < byteLength; i++) {
             sum = fullAdder(byteA[i], byteB[i], carry)[1];
             answer[i] = sum;
             carry = fullAdder(byteA[i], byteB[i], carry)[0];

@@ -1,27 +1,32 @@
 package convertor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Convertor {
-    /**
-     * TODO 2진법 자릿수 입력값에 따라 변동되게 만들어보자.
-     */
+
     public boolean[] dec2bin(int decimal) {
-        int numberOfDigits = 8;
-        boolean[] answer = new boolean[numberOfDigits];
+        List<Boolean> answer = new ArrayList<>();
         int value = decimal;
-        int count = 0;
         while (value != 1) {
             if (value % 2 == 0) {
                 value /= 2;
-                answer[count] = false;
-                count++;
+                answer.add(false);
                 continue;
             }
             value /= 2;
-            answer[count] = true;
-            count++;
+            answer.add(true);
         }
-        answer[count] = true;
-        return answer;
+        answer.add(true);
+        return bitListToArr(answer);
+    }
+
+    private boolean[] bitListToArr(List<Boolean> answer) {
+        boolean[] bitArr = new boolean[answer.size()];
+        for (int i = 0; i < answer.size(); i++) {
+            bitArr[i] = answer.get(i);
+        }
+        return bitArr;
     }
 
     public int bin2dec(boolean[] bin) {

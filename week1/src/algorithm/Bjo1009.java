@@ -28,7 +28,7 @@ public class Bjo1009 {
 
     public static int solve(int a, int b) {
         int result = 1;
-        for (int i = 0; i < b % 4; i++) {
+        for (int i = 0; i < b; i++) {
             result = (result * a) % 10;
         }
         return result;

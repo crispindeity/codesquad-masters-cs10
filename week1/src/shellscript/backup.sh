@@ -3,16 +3,16 @@
 check_backup_dir() {
 	if ! [ -d backup ]
 	then
-		mkdir backup
+      mkdir backup
 	fi
 }
 
 is_empty_file() {
 	if [ -e *.cs ]
 	then
-		cp *.cs ../backup
+      cp *.cs ../backup
 	else
-		echo $i is empty
+      echo "$i" is empty
 	fi
 }
 
@@ -20,7 +20,7 @@ file_backup() {
 	today=$(date "+%Y%m%d")
 	backup_file_name="backup_$today"
 	
-	zip $backup_file_name.zip backup/*
+	zip "$backup_file_name".zip backup/*
 }
 
 backup_file_del() {
@@ -30,7 +30,7 @@ backup_file_del() {
 }
 
 transfer_file() {
-	scp $backup_file_name.zip geombong@192.xxx.xx.x:~/backup
+	scp "$backup_file_name".zip geombong@192.xxx.xx.x:~/backup
 }
 
 dir_lists=$(ls -d day*)
@@ -39,9 +39,9 @@ check_backup_dir
 
 for i in $dir_lists
 do
-	cd $i
-	is_empty_file
-	cd ..
+    cd "$i"
+    is_empty_file
+    cd ..
 done
 
 file_backup

@@ -1,6 +1,5 @@
 package videoeditor;
 
-
 public class LinkedList<E> {
 
     private Node<E> head;
@@ -49,7 +48,21 @@ public class LinkedList<E> {
     }
 
     public void add(int index, Object input) {
-        
+        if (index == 0) {
+            addFirst(input);
+        } else {
+            Node<E> temp1 = head;
+            while (--index != 0) {
+                temp1 = temp1.next;
+            }
+            Node<E> temp2 = temp1.next;
+            Node<E> newNode = new Node<>((E) input);
+            temp1.next = newNode;
+            newNode.next = temp2;
+            if (newNode.next == null) {
+                tail = newNode;
+            }
+        }
     }
 
     public boolean add(Object input) {
@@ -61,6 +74,46 @@ public class LinkedList<E> {
         return true;
     }
 
+    public void removeLast() {
+        Node<E> temp = head;
+        Node<E> temp2 = temp.next;
+        if (tail == null) {
+            return;
+        }
+        while (temp2.next != null) {
+            temp = temp.next;
+            temp2 = temp.next;
+        }
+        temp.next = null;
+        tail = temp;
+    }
+
+    public void removeFirst() {
+        if (head == null) {
+            return;
+        }
+        head = head.next;
+    }
+
+    public void remove(int index) {
+    }
+
+    public Node<E> get(int index) {
+        Node<E> temp = head;
+        if (index == 0) {
+            return head;
+        } else {
+            while (index-- != 0) {
+                temp = temp.next;
+            }
+        }
+        if (temp == null) {
+            throw new NullPointerException();
+        }
+        return temp;
+    }
+
+    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         if (head == null) {
@@ -72,7 +125,6 @@ public class LinkedList<E> {
             sb.append(temp.data);
             temp = temp.next;
         }
-
-        return String.valueOf(sb.append(temp.data));
+        return String.valueOf(sb.append(tail != null ? tail : ""));
     }
 }

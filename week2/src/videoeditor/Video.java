@@ -15,8 +15,4 @@ public class Video {
     public String toString() {
         return title + "(" + id + ")" + ":" + videoPlaybackTime + '\n';
     }
-
-    public String getTitle() {
-        return title;
-    }
 }

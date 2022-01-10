@@ -20,12 +20,24 @@ public class VideoEditor<E> {
         LinkedList<E> videoList = new LinkedList<>();
 
         System.out.println("---영상클립---");
-        System.out.println(videoList);
-        videoList.addFirst(video1);
-        videoList.addFirst(video2);
-        videoList.addLast(video3);
+        videoList.add(video1);
+        videoList.add(video2);
+        videoList.add(video3);
         videoList.add(video4);
+        videoList.add(video5);
+        videoList.add(video6);
+        videoList.add(video7);
+        videoList.add(video8);
+        videoList.add(video9);
+        videoList.add(video10);
+        videoList.add(video11);
+        videoList.add(video12);
+        videoList.add(video13);
+        videoList.removeLast();
+        videoList.removeLast();
+        videoList.removeFirst();
 
         System.out.println(videoList);
+        System.out.println(videoList.get(9));
     }
 }

@@ -26,6 +26,7 @@ public class LinkedList<E> {
         return currentSize;
     }
 
+    @SuppressWarnings("unchecked")
     public void addFirst(Object input) {
         Node<E> newNode = new Node<>((E) input);
         newNode.next = head;
@@ -36,6 +37,7 @@ public class LinkedList<E> {
         }
     }
 
+    @SuppressWarnings("unchecked")
     public void addLast(Object input) {
         Node<E> newNode = new Node<>((E) input);
         if (size() == 0) {
@@ -47,6 +49,7 @@ public class LinkedList<E> {
         currentSize++;
     }
 
+    @SuppressWarnings("unchecked")
     public void add(int index, Object input) {
         if (index == 0) {
             addFirst(input);
@@ -107,11 +110,12 @@ public class LinkedList<E> {
         while (--index != 0) {
             temp = temp.next;
         }
-        if (temp.next.data == tail) {
+        Node<E> temp2 = temp.next;
+        if (temp2.data == tail) {
             tail = temp;
         }
-        temp.next.data = null;
-        temp.next = temp.next.next;
+        temp2.data = null;
+        temp.next = temp2.next;
 
         currentSize--;
     }

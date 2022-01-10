@@ -40,37 +40,38 @@ public class LinkedList<E> {
         Node<E> newNode = new Node<>((E) input);
         if (size() == 0) {
             addFirst(input);
-        } else {
-            tail.next = newNode;
-            tail = newNode;
-            currentSize++;
+            return;
         }
+        tail.next = newNode;
+        tail = newNode;
+        currentSize++;
     }
 
     public void add(int index, Object input) {
         if (index == 0) {
             addFirst(input);
-        } else {
-            Node<E> temp1 = head;
-            while (--index != 0) {
-                temp1 = temp1.next;
-            }
-            Node<E> temp2 = temp1.next;
-            Node<E> newNode = new Node<>((E) input);
-            temp1.next = newNode;
-            newNode.next = temp2;
-            if (newNode.next == null) {
-                tail = newNode;
-            }
+            return;
         }
+        Node<E> temp1 = head;
+        while (--index != 0) {
+            temp1 = temp1.next;
+        }
+        Node<E> temp2 = temp1.next;
+        Node<E> newNode = new Node<>((E) input);
+        temp1.next = newNode;
+        newNode.next = temp2;
+        if (newNode.next == null) {
+            tail = newNode;
+        }
+        currentSize++;
     }
 
     public boolean add(Object input) {
         if (currentSize == 0) {
             addFirst(input);
-        } else {
-            addLast(input);
+            return true;
         }
+        addLast(input);
         return true;
     }
 
@@ -86,6 +87,7 @@ public class LinkedList<E> {
         }
         temp.next = null;
         tail = temp;
+        currentSize--;
     }
 
     public void removeFirst() {
@@ -93,9 +95,25 @@ public class LinkedList<E> {
             return;
         }
         head = head.next;
+        currentSize--;
     }
 
     public void remove(int index) {
+        if (index == 0) {
+            removeFirst();
+            return;
+        }
+        Node<E> temp = head;
+        while (--index != 0) {
+            temp = temp.next;
+        }
+        if (temp.next.data == tail) {
+            tail = temp;
+        }
+        temp.next.data = null;
+        temp.next = temp.next.next;
+
+        currentSize--;
     }
 
     public Node<E> get(int index) {

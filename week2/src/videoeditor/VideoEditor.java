@@ -24,20 +24,19 @@ public class VideoEditor<E> {
         videoList.add(video2);
         videoList.add(video3);
         videoList.add(video4);
-        videoList.add(video5);
-        videoList.add(video6);
-        videoList.add(video7);
-        videoList.add(video8);
-        videoList.add(video9);
-        videoList.add(video10);
-        videoList.add(video11);
-        videoList.add(video12);
-        videoList.add(video13);
-        videoList.removeLast();
-        videoList.removeLast();
-        videoList.removeFirst();
+//        videoList.add(video5);
+//        videoList.add(video6);
+//        videoList.add(video7);
+//        videoList.add(video8);
+//        videoList.add(video9);
+//        videoList.add(video10);
+//        videoList.add(video11);
+//        videoList.add(video12);
+//        videoList.add(video13);
 
+
+        videoList.remove(2);
         System.out.println(videoList);
-        System.out.println(videoList.get(9));
+        System.out.println(videoList.size());
     }
 }

@@ -1,19 +1,21 @@
 package videoeditor;
 
-public class LinkedList<E> {
+public class MyLinkedList<E> {
 
     private Node<E> head;
     private Node<E> tail;
     private int currentSize = 0;
 
-    private class Node<E> {
+    private static class Node<E> {
 
         private Object data;
         private Node<E> next;
+        private Node<E> previous;
 
         public Node(E data) {
             this.data = data;
             this.next = null;
+            this.previous = null;
         }
 
         @Override
@@ -34,7 +36,9 @@ public class LinkedList<E> {
         currentSize++;
         if (head.next == null) {
             tail = head;
+            return;
         }
+        tail = head.next;
     }
 
     @SuppressWarnings("unchecked")
@@ -79,15 +83,10 @@ public class LinkedList<E> {
     }
 
     public void removeLast() {
-        Node<E> temp = head;
-        Node<E> temp2 = temp.next;
         if (tail == null) {
             return;
         }
-        while (temp2.next != null) {
-            temp = temp.next;
-            temp2 = temp.next;
-        }
+        Node<E> temp = tail;
         temp.next = null;
         tail = temp;
         currentSize--;

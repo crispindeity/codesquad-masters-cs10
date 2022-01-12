@@ -17,25 +17,23 @@ public class VideoEditor<E> {
         Video video12 = new Video("제목12", "fabc", 4);
         Video video13 = new Video("제목13", "dcba", 1);
 
-        LinkedList<E> videoList = new LinkedList<>();
+        MyLinkedList<E> videoList = new MyLinkedList<>();
 
         System.out.println("---영상클립---");
         videoList.add(video1);
         videoList.add(video2);
         videoList.add(video3);
         videoList.add(video4);
-//        videoList.add(video5);
-//        videoList.add(video6);
-//        videoList.add(video7);
-//        videoList.add(video8);
-//        videoList.add(video9);
-//        videoList.add(video10);
-//        videoList.add(video11);
-//        videoList.add(video12);
-//        videoList.add(video13);
+        videoList.add(video5);
+        videoList.add(video6);
+        videoList.add(video7);
+        videoList.add(video8);
+        videoList.add(video9);
+        videoList.add(video10);
+        videoList.add(video11);
+        videoList.add(video12);
+        videoList.add(video13);
 
-
-        videoList.remove(2);
         System.out.println(videoList);
         System.out.println(videoList.size());
     }

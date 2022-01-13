@@ -3,26 +3,21 @@ package findarea;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Input {
 
-    private final Calc calc;
-
     private static final int MAX_INPUT_COUNT = 13;
-
-    public Input(Calc calc) {
-        this.calc = calc;
-    }
 
     public void inputString() throws IOException {
         BufferedReader buf = new BufferedReader(new InputStreamReader(System.in));
-
         System.out.println("> 좌표를 입력하세요.");
         String input = buf.readLine();
-        calc.calculation(splitInput(input));
+        CalcLineLength calcLineLength = new CalcLineLength(splitInput(input));
+        calcLineLength.calculation();
     }
 
     public List<String> splitInput(String input) throws IOException {
@@ -41,11 +36,10 @@ public class Input {
             if (point.size() > MAX_INPUT_COUNT) {
                 throw new ExceededInputCountException("입력개수를 초과했습니다.");
             }
+            return point;
         } catch (ExceededInputCountException e) {
-            System.out.println(e.getMessage());
-            System.out.println(e.getErrorCode());
             inputString();
+            return new ArrayList<>();
         }
-        return point;
     }
 }

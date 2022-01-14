@@ -10,6 +10,7 @@ public class CalcLineLength implements Calculator {
 
     public CalcLineLength(List<String> location) {
         split(location);
+        calculation();
     }
 
     @Override

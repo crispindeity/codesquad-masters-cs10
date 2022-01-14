@@ -16,8 +16,15 @@ public class Input {
         BufferedReader buf = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("> 좌표를 입력하세요.");
         String input = buf.readLine();
-        CalcLineLength calcLineLength = new CalcLineLength(splitInput(input));
-        calcLineLength.calculation();
+        constructorClassification(splitInput(input));
+    }
+
+    private void constructorClassification(List<String> splitInput) {
+        if (splitInput.size() == 3) {
+            new CalcTriangleArea(splitInput);
+            return;
+        }
+        new CalcLineLength(splitInput);
     }
 
     public List<String> splitInput(String input) throws IOException {

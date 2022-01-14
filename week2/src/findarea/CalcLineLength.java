@@ -25,7 +25,7 @@ public class CalcLineLength implements Calculator {
     @Override
     public void result(double value) {
         PrintView printView = new PrintView();
-        printView.printLineResult(value);
+        printView.printResult("두 점 사이 거리는", value);
     }
 
     @Override

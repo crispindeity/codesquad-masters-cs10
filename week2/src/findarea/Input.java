@@ -1,52 +1,28 @@
 package findarea;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Scanner;
 
 public class Input {
 
-    private static final int MAX_INPUT_COUNT = 13;
-
-    public void inputString() throws IOException {
-        BufferedReader buf = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("> 좌표를 입력하세요.");
-        String input = buf.readLine();
-        constructorClassification(splitInput(input));
+    public void init() {
+        inputString();
     }
 
-    private void constructorClassification(List<String> splitInput) {
-        if (splitInput.size() == 3) {
-            new CalcTriangleArea(splitInput);
-            return;
-        }
-        new CalcLineLength(splitInput);
-    }
-
-    public List<String> splitInput(String input) throws IOException {
-        List<String> point;
-        point = Arrays.stream(input
-                        .replace("(", "")
-                        .replace(")", "")
-                        .split("-")
-                )
-                .collect(Collectors.toList());
-        return checkedInputCount(point);
-    }
-
-    private List<String> checkedInputCount(List<String> point) throws IOException {
-        try {
-            if (point.size() > MAX_INPUT_COUNT) {
-                throw new ExceededInputCountException("입력개수를 초과했습니다.");
+    public void inputString() {
+        Scanner scan = new Scanner(System.in);
+        DataSplit dataSplit = new DataSplit();
+        while (true) {
+            try {
+                System.out.println("> 좌표를 입력하세요.");
+                String input = scan.nextLine();
+                if (input.length() < 6) {
+                    throw new IllegalArgumentException("잘못된 입력입니다.");
+                }
+                dataSplit.splitInput(input);
+                return;
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
             }
-            return point;
-        } catch (ExceededInputCountException e) {
-            inputString();
-            return new ArrayList<>();
         }
     }
 }

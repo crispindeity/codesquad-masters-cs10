@@ -1,10 +1,8 @@
 package findarea;
 
-import java.io.IOException;
-
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         Input input = new Input();
-        input.inputString();
+        input.init();
     }
 }

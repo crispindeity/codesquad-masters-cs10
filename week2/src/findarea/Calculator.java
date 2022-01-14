@@ -6,7 +6,7 @@ public interface Calculator {
 
     void calculation();
 
-    void printValue(double value);
+    void result(double value);
 
     void split(List<String> location);
 }

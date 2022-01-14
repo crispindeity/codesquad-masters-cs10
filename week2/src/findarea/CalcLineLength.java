@@ -19,12 +19,13 @@ public class CalcLineLength implements Calculator {
         for (int i = 0; i < xLocation.size() - 1; i++) {
             value = Math.sqrt(Math.pow(xLocation.get(i) - xLocation.get(i + 1), 2) + Math.pow(yLocation.get(i) - yLocation.get(i + 1), 2));
         }
-        printValue(value);
+        result(value);
     }
 
     @Override
-    public void printValue(double value) {
-        System.out.println("두 점 사이 거리는 " + value);
+    public void result(double value) {
+        PrintView printView = new PrintView();
+        printView.printLineResult(value);
     }
 
     @Override

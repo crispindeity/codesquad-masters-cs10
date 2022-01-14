@@ -15,8 +15,9 @@ public class CalcTriangleArea implements Calculator {
     }
 
     @Override
-    public void printValue(double value) {
-
+    public void result(double value) {
+        PrintView printView = new PrintView();
+        printView.printResult("삼각형", value);
     }
 
     @Override

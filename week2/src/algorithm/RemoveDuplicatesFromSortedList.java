@@ -9,7 +9,6 @@ import java.util.Set;
 
 public class RemoveDuplicatesFromSortedList {
     public ListNode deleteDuplicates(ListNode head) {
-
         if (head == null) {
             return null;
         }
@@ -34,29 +33,32 @@ public class RemoveDuplicatesFromSortedList {
 
 class RemoveDuplicatesFromSortedListTest {
 
-    private final Set<Integer> tmp = new HashSet<>();
-    private final ListNode listNode5 = new ListNode(3);
-    private final ListNode listNode4 = new ListNode(3, listNode5);
-    private final ListNode listNode3 = new ListNode(2, listNode4);
-    private final ListNode listNode2 = new ListNode(1, listNode3);
-    private final ListNode listNode = new ListNode(1, listNode2);
-    private final RemoveDuplicatesFromSortedList removeDuplicatesFromSortedList = new RemoveDuplicatesFromSortedList();
 
     @Test
     void removeDuplicatesFromSortedListTest() {
+        ListNode listNode5 = new ListNode(3);
+        ListNode listNode4 = new ListNode(3, listNode5);
+        ListNode listNode3 = new ListNode(2, listNode4);
+        ListNode listNode2 = new ListNode(1, listNode3);
+        ListNode listNode = new ListNode(1, listNode2);
+        RemoveDuplicatesFromSortedList removeDuplicatesFromSortedList = new RemoveDuplicatesFromSortedList();
+
+        Set<Integer> tmp = new HashSet<>();
+
         ListNode now = listNode;
         ListNode next = listNode.next;
-        Integer[] value = tmp.toArray(new Integer[0]);
-        ListNode testNow = removeDuplicatesFromSortedList.deleteDuplicates(listNode);
-        ListNode testNext = testNow.next;
-        Integer[] result = new Integer[value.length];
-
         while (true) {
             tmp.add(now.val);
             now = next;
             if (now == null) break;
             next = now.next;
         }
+
+        Integer[] value = tmp.toArray(new Integer[0]);
+        Integer[] result = new Integer[value.length];
+
+        ListNode testNow = removeDuplicatesFromSortedList.deleteDuplicates(listNode);
+        ListNode testNext = testNow.next;
 
         for (int i = 0; ; i++) {
             result[i] = testNow.val;
@@ -71,6 +73,9 @@ class RemoveDuplicatesFromSortedListTest {
 class ListNode {
     int val;
     ListNode next;
+
+    ListNode() {
+    }
 
     ListNode(int val) {
         this.val = val;

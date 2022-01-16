@@ -7,25 +7,33 @@ import org.junit.jupiter.api.Test;
 import java.util.HashSet;
 import java.util.Set;
 
+class ListNode {
+    int val;
+    ListNode next;
+
+    ListNode() {
+    }
+
+    ListNode(int val) {
+        this.val = val;
+    }
+
+    ListNode(int val, ListNode next) {
+        this.val = val;
+        this.next = next;
+    }
+}
+
 public class RemoveDuplicatesFromSortedList {
     public ListNode deleteDuplicates(ListNode head) {
-        if (head == null) {
-            return null;
-        }
 
         ListNode now = head;
-        ListNode next = head.next;
-        while (next != null) {
-            if (now.val == next.val) {
-                if (next.next == null) {
-                    now.next = null;
-                    return head;
-                }
-                now.next = next.next;
-                next = now;
+        while (now != null && now.next != null) {
+            if (now.next.val == now.val) {
+                now.next = now.next.next;
+                continue;
             }
-            now = next;
-            next = now.next;
+            now = now.next;
         }
         return head;
     }
@@ -67,22 +75,5 @@ class RemoveDuplicatesFromSortedListTest {
             testNext = testNow.next;
         }
         assertArrayEquals(result, value);
-    }
-}
-
-class ListNode {
-    int val;
-    ListNode next;
-
-    ListNode() {
-    }
-
-    ListNode(int val) {
-        this.val = val;
-    }
-
-    ListNode(int val, ListNode next) {
-        this.val = val;
-        this.next = next;
     }
 }

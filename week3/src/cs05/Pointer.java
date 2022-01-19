@@ -1,2 +1,4 @@
-package cs05;public class Pointer {
+package cs05;
+
+public class Pointer {
 }

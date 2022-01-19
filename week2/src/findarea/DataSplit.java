@@ -8,7 +8,6 @@ import java.util.stream.Collectors;
 public class DataSplit {
 
     public void splitInput(String input) {
-        String pattern = "^[0-9],[0-9]";
         List<String> point;
         point = Arrays.stream(input
                         .replace("(", "")
@@ -16,15 +15,17 @@ public class DataSplit {
                         .split("-")
                 )
                 .collect(Collectors.toList());
-        isValidData(pattern, point);
+        isValidData(point);
     }
 
-    private void isValidData(String pattern, List<String> point) {
+    private List<String> isValidData(List<String> point) {
+        String pattern = "^[0-9],[0-9]";
         for (var i : point) {
             boolean isValid = Pattern.matches(pattern, i);
             if (!isValid) {
                 throw new IllegalArgumentException("잘못된 입력입니다.");
             }
         }
+        return point;
     }
 }

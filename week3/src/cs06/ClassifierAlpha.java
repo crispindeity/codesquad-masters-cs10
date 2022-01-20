@@ -47,7 +47,7 @@ public class ClassifierAlpha {
     }
 
     public String isPrime(int number) {
-        Set<Object> primeSet = new HashSet<>() {
+        Set primeSet = new HashSet<>() {
             {
                 add(1);
                 add(number);
@@ -69,6 +69,12 @@ public class ClassifierAlpha {
     }
 
     public String isSquared(int number) {
-        return Math.pow(sum(factors(number)), 2) == number ? "squared, " : "";
+        return factors(number).stream()
+                .map(String::valueOf)
+                .mapToDouble(s -> Double.parseDouble((String) s))
+                .boxed()
+                .collect(Collectors.toList())
+                .contains(Math.sqrt(number)) ? "squared, " : "";
+
     }
 }

@@ -70,8 +70,8 @@ public class ClassifierAlpha {
 
     public String isSquared(int number) {
         return factors(number).stream()
-                .mapToDouble(s -> Double.parseDouble(String.valueOf(s)))
-                .boxed()
+                .map(Integer.class::cast)
+                .map(Integer::doubleValue)
                 .collect(Collectors.toList())
                 .contains(Math.sqrt(number)) ? "squared, " : "";
     }

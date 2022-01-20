@@ -31,12 +31,12 @@ public class ClassifierAlpha {
         return number % potentialFactor == 0;
     }
 
-    public static int sum(Set factors) {
+    public static int sum(Set<Object> factors) {
         return (int) factors.stream().reduce(0, (a, b) -> (int) a + (int) b);
     }
 
-    public Set factors(int number) {
-        HashSet factors = new HashSet<>();
+    public Set<Object> factors(int number) {
+        HashSet<Object> factors = new HashSet<>();
         for (int pod = 1; pod <= Math.sqrt(number); pod++) {
             if (isFactor(pod, number)) {
                 factors.add(pod);
@@ -47,7 +47,7 @@ public class ClassifierAlpha {
     }
 
     public String isPrime(int number) {
-        Set primeSet = new HashSet<>() {
+        Set<Object> primeSet = new HashSet<>() {
             {
                 add(1);
                 add(number);
@@ -70,11 +70,9 @@ public class ClassifierAlpha {
 
     public String isSquared(int number) {
         return factors(number).stream()
-                .map(String::valueOf)
-                .mapToDouble(s -> Double.parseDouble((String) s))
+                .mapToDouble(s -> Double.parseDouble(String.valueOf(s)))
                 .boxed()
                 .collect(Collectors.toList())
                 .contains(Math.sqrt(number)) ? "squared, " : "";
-
     }
 }

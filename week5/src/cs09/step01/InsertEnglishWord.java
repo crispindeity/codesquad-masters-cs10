@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class InsertEnglishWord {
     public static void main(String[] args) throws FileNotFoundException {
-        File file = new File("week5/src/cs09/db/englishWord");
+        File file = new File("week5/src/cs09/step01/englishWord");
         Scanner scan = new Scanner(file);
         while (scan.hasNext()) {
             String word = scan.next();
@@ -25,9 +25,9 @@ public class InsertEnglishWord {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
             String url = "jdbc:mysql://localhost/pcRoomDB";
-            conn = DriverManager.getConnection(url, "", "");
+            conn = DriverManager.getConnection(url, "geombong", "123456");
 
-            String sql = "INSERT INTO english_word VALUES (?)";
+            String sql = "INSERT INTO pcRoomDB.english_word VALUES (?)";
             pstmt = conn.prepareStatement(sql);
 
             pstmt.setString(1, word);

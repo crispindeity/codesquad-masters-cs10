@@ -18,7 +18,7 @@ public class Select {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
             String url = "jdbc:mysql://localhost/pcRoomDB";
-            conn = DriverManager.getConnection(url, "", "");
+            conn = DriverManager.getConnection(url, "geombong", "123456");
 
             stmt = conn.createStatement();
 

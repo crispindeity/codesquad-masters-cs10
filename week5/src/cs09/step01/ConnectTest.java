@@ -12,7 +12,7 @@ public class ConnectTest {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
             String url = "jdbc:mysql://localhost/pcRoomDB";
-            conn = DriverManager.getConnection(url, "", "");
+            conn = DriverManager.getConnection(url, "geombong", "123456");
             System.out.println("연결 성공");
         } catch (ClassNotFoundException e) {
             System.out.println("드라이버 로딩 실패");
